@@ -18,6 +18,7 @@ export class TasksService {
       status: 'OPEN',
     };
     this.tasks.update((tasks) => [...tasks, newTask]);
+    this.loggingService.log(`Task with id ${newTask.id} was added`);
   }
   updateTaskStatus(taskId: string, newStatus: Task['status']) {
     this.tasks.update((tasks) =>
