@@ -1,11 +1,13 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { Task } from './task.model';
+import { LoggingService } from '../logging.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TasksService {
   private tasks = signal<Task[]>([]);
+  private loggingService = inject(LoggingService);
   allTasks = this.tasks.asReadonly();
 
   addTask(taskData: { title: string; description: string }) {
