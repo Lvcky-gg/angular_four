@@ -15,6 +15,8 @@ export class TasksListComponent {
   private selectedFilter = signal<string>('all');
   tasks = computed(() => {
     switch (this.selectedFilter()) {
+      case 'all':
+        return this.tasksService.allTasks();
       case 'open':
         return this.tasksService
           .allTasks()
