@@ -17,6 +17,13 @@ export class TasksService {
     };
     this.tasks.update((tasks) => [...tasks, newTask]);
   }
+  updateTaskStatus(taskId: string, newStatus: Task['status']) {
+    this.tasks.update((tasks) =>
+      tasks.map((task) =>
+        task.id === taskId ? { ...task, status: newStatus } : task
+      )
+    );
+  }
 
   getTasks() {
     return this.tasks;
